@@ -1,0 +1,16 @@
+<div class="toolbar">
+  <select class="form-control" id="folderSelect">
+    <option>Inbox</option>
+    <option>Sent</option>
+  </select>
+  <button type="button" class="btn btn-primary" id="composeButton">+ Compose</button>
+</div>
+<div class="master-detail">
+  <h3 *ngIf="messages.length === 0; else messageContent" class="no-messages">No Messages to Display</h3>
+  <ng-template #messageContent>
+    <div class="message-list">
+      <mcc-message *ngFor="let message of messages" [message]="message"></mcc-message>
+    </div>
+    <div class="detail-view"></div>
+  </ng-template>
+</div>

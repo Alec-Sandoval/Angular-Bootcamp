@@ -1,0 +1,19 @@
+<div class="main">
+  <div id="sender">
+    <strong>{{ message.sender }}</strong>
+  </div>
+  <div id="subject">
+    <strong>{{ message.subject }}</strong>
+  </div>
+  <div id="message">
+    {{ message.message }}
+  </div>
+</div>
+<div>
+  <div id="date">
+    {{ message.dateSent | date:'shortDate'  }}
+  </div>
+  <div id="time">
+    {{ message.dateSent | date:'shortTime' }}
+  </div>
+</div>
