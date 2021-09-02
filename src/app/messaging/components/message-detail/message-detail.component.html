@@ -1,0 +1,10 @@
+<div id="subject">
+  {{ message.subject }}
+</div>
+<div id="metadata">
+  <div>{{ message.sender }}</div>
+  <div>{{ message.dateSent | date:'short' }}</div>
+</div>
+<div id="message">
+  {{ message.message }}
+</div>
