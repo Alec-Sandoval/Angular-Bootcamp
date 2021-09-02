@@ -1,0 +1,26 @@
+<div class="toolbar">
+  <select class="form-control" id="folderSelect">
+    <option>Inbox</option>
+    <option>Sent</option>
+  </select>
+  <button type="button" class="btn btn-primary" id="composeButton" (click)="composeMessage()">+ Compose</button>
+</div>
+<div class="master-detail" [class.composing]="composingMessage">
+  <h3 *ngIf="(messages$ | async)?.length === 0; else messageContent" class="no-messages">No Messages to Display</h3>
+  <ng-template #messageContent>
+    <div class="message-list">
+      <mcc-message *ngFor="let message of messages$ | async" [class.selected]="message === selectedMessage" [message]="message" (click)="selectMessage(message)"></mcc-message>
+    </div>
+    <div class="detail-view">
+      <ng-container *ngIf="!composingMessage; else composeMessageContent">
+        <h4 *ngIf="!selectedMessage; else detailContent">Please select a message.</h4>
+        <ng-template #detailContent>
+          <mcc-message-detail [message]="selectedMessage!"></mcc-message-detail>
+        </ng-template>
+      </ng-container>
+      <ng-template #composeMessageContent>
+        <mcc-compose-message></mcc-compose-message>
+      </ng-template>
+    </div>
+  </ng-template>
+</div>

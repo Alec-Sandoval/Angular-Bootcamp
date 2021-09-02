@@ -1,0 +1,17 @@
+<form [formGroup]="messageForm">
+  <div>
+    <label for="to" class="form-label">To</label>
+    <input type="text" class="form-control" id="to" formControlName="to">
+  </div>
+  <div>
+    <label for="subject" class="form-label">Subject</label>
+    <input type="text" class="form-control" id="subject" formControlName="subject">
+  </div>
+  <div class="message-content">
+    <label for="message" class="form-label">Message</label>
+    <textarea class="form-control" id="message" formControlName="message"></textarea>
+  </div>
+</form>
+<button type="submit" class="btn btn-primary" id="send" [disabled]="!messageForm.valid" (click)="sendMessage()">Send</button>
+
+{{ messageForm.value | json }}
